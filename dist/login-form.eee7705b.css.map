@@ -1,1 +1,0 @@
-{"mappings":"AAAA","sources":["public/validationLogin.css"],"sourcesContent":["#email-error {\r\n    color: crimson;\r\n    font-size: small;\r\n}\r\n\r\n#password-error {\r\n    color: crimson;\r\n    font-size: small;\r\n}"],"names":[],"version":3,"file":"login-form.eee7705b.css.map","sourceRoot":"/__parcel_source_root/"}
