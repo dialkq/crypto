@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- POPPINS -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css3py-3?family=Poppins&display=swap" rel="stylesheet"> -->
+    <!-- LATO -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css3py-3?family=Lato:wght@300;400;900&display=swap" rel="stylesheet"> -->
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- CSS TAILWIND INCLUDED-->
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="table.css">
+    <!-- TABULATOR -->
+    <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+    <!-- AJAX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- CSS HOVER BUTTON ADD NEW -->
+    <style>
+        .edit:hover i,
+        .edit:hover p {
+            color: white !important;
+        }
+
+        .formContainer {
+            max-height: calc(100vh - 0px);
+            overflow-y: auto;
+        }
+    </style>
+    <title>New Companies</title>
+</head>
+
+<body class="w-full flex">
+    <!-- SIDEBAR -->
+    <div class="lg:w-3/12 lg:h-screen bg-white">
+        <!-- PROFILE ICON -->
+        <div class="lg:py-5">
+            <img class="h-20 w-20 mx-auto" src="../src/image/profileIcon.png" alt="Profile Icon">
+            <p id="showName" class="text-center text-xs font-light mt-1"></p>
+            <p id="logoutBtn" class="text-center text-xs underline hover:text-blue-600 cursor-pointer">logout</p>
+        </div>
+        <!-- LIST BAR -->
+        <div class="lg:py-3">
+            <ul class="">
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='corporateMember.html'">
+                    Corporate
+                    Member</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='expert.html' ">Expert</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='individualMember.html'">
+                    individual
+                    Member</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer bg-blue-50"
+                    onclick="location.href='newCompanies.html'">New
+                    Companies</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='series.html'">Series</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='movie.html'">Movie</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='administrator.html'">
+                    Administrator</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='ads.html'">Ads
+                    Management</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MID CONTENT -->
+    <div class="lg:w-full mx-auto shadow-2xl bg-white">
+        <!-- LOGO -->
+        <div class="lg:w-11/12 mx-auto bg-black opacity-90 rounded-es-full rounded-ee-full">
+            <p class="text-white lg:text-lg font-lato text-center lg:py-3 mx-auto">LOGO</p>
+        </div>
+
+        <!-- FITUR BAR -->
+        <div class="lg:mt-16 w-11/12 flex mx-auto justify-between">
+            <div class="flex w-max">
+                <img class="h-6 my-auto" src="../src/image/paper.png" alt="paper icon">
+                <p class="font-sans font-bold text-lg ml-2 my-auto">List of newly established companies in Vietnam</p>
+            </div>
+            <!-- FILTER INPUT -->
+            <div class="relative">
+                <input class="bg-slate-100 lg:w-48 rounded-full py-2 pl-9 pr-2 text-base placeholder:font-semibold"
+                    type="search" name="search" id="" placeholder="Search">
+                <i class="fa fa-search absolute top-2 left-3 text-slate-400"></i>
+            </div>
+            <button id="addNewBtn"
+                class="flex justify-evenly border-2 border-violet-600 rounded-xl edit focus:outline-none focus:border-transparent focus:ring-transparent focus:bg-gradient-to-r focus:from-blue-600 focus:to-violet-600 hover:outline-none hover:border-transparent hover:ring-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600"
+                type="button">
+                <i class="fa-solid fa-plus my-auto font-bold text-violet-600 ml-3"></i>
+                <p class="my-auto text-sm text-violet-600 font-bold mx-3">Add New</p>
+            </button>
+        </div>
+
+        <!-- FORM POP UP MODAL-->
+        <div id="formContainer"
+            class="formContainer lg:w-2/3 lg:h-max rounded-3xl z-50 overflow-y-auto hidden fixed top-3 bg-gray-100">
+            <form id="myForm" class="w-10/12 my-8 mx-auto">
+                <!-- CORPORATE INFO -->
+                <div class="bg-slate-500 text-white w-max rounded-lg p-1.5">
+                    <p class="text-center text-xs font-semibold font-sans">Corporate Info</p>
+                </div>
+                <hr class="border-b-0 border-black mt-2">
+                <div class="flex justify-between mt-5">
+                    <label class="text-base font-bold font-sans my-auto" for="corporateName">Corporate Name</label>
+                    <input
+                        class="w-3/5 bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                        type="text" name="corporateName" placeholder="Corporate Name">
+                </div>
+                <div class="flex justify-between mt-5">
+                    <label class="text-base font-bold font-sans my-auto" for="industry">Industry</label>
+                    <select
+                        class="w-3/5 bg-white rounded-md pl-3 py-2 border border-slate-400 text-slate-400 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                        name="industry" id="">
+                        <option selected value="industry">Select Industries</option>
+                    </select>
+                </div>
+                <div class="flex justify-between mt-5">
+                    <label class="text-base font-bold font-sans my-auto" for="membership">Membership Type</label>
+                    <select
+                        class="w-3/5 bg-white rounded-md pl-3 py-2 border border-slate-400 text-slate-400 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                        name="industry" id="">
+                        <option selected value="membership">Select Membership Type</option>
+                    </select>
+                </div>
+                <!-- OWNER INFO -->
+                <div class="bg-slate-500 text-white w-max rounded-lg p-1.5 mt-10">
+                    <p class="text-center text-xs font-semibold font-sans">Owner Info</p>
+                </div>
+                <hr class="border-b-0 border-black mt-2">
+                <div class="flex justify-between mt-5">
+                    <label class="text-base font-bold font-sans my-auto" for="firstName">First Name</label>
+                    <input
+                        class="w-3/5 bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                        type="text" name="firstName" placeholder="First Name" required>
+                </div>
+                <div class="flex justify-between mt-5">
+                    <label class="text-base font-bold font-sans my-auto" for="lastName">Last Name</label>
+                    <input
+                        class="w-3/5 bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                        type="text" name="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="flex justify-between mt-5">
+                    <label class="text-base font-bold font-sans my-auto" for="email">Email</label>
+                    <input
+                        class="w-3/5 bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                        type="email" name="email" placeholder="john@example.com" required>
+                </div>
+            </form>
+            <!-- BUTTON ADD AND CANCEL DI DALAM FORM-->
+            <div class="w-11/12 mx-auto flex justify-center mb-10 mt-10">
+                <button
+                    class="text-violet-600 text-sm text-center font-bold border border-violet-600 ring-2 ring-violet-600 rounded-md px-6 py-2 mx-5 focus:outline-none focus:border-transparent focus:ring-transparent focus:bg-gradient-to-r focus:from-blue-600 focus:to-violet-600 focus:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600 hover:text-white"
+                    type="button" id="closeBtn">Cancel</button>
+                <button
+                    class="text-violet-600 text-sm text-center font-bold border border-violet-600 ring-2 ring-violet-600 rounded-md px-6 py-2 focus:outline-none focus:border-transparent focus:ring-transparent focus:bg-gradient-to-r focus:from-blue-600 focus:to-violet-600 focus:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600 hover:text-white"
+                    type="button">Register</button>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div id="expert-table" class="my-5 w-11/12 mx-auto"></div>
+    </div>
+    <!-- JAVASCRIPT -->
+    <script src="main.js"></script>
+    <script src="newCompaniesTable.js"></script>
+</body>
+
+</html>

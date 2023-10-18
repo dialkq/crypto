@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- POPPINS -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css3py-3?family=Poppins&display=swap" rel="stylesheet"> -->
+    <!-- LATO -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css3py-3?family=Lato:wght@300;400;900&display=swap" rel="stylesheet"> -->
+    <!-- EYE ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./validationLogin.css">
+    <!-- JQUERY VALIDATION -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <title>Reset Password</title>
+</head>
+
+<body class="w-full flex">
+    <!-- SIDEBAR -->
+    <div class="lg:w-3/12 lg:h-screen bg-white">
+        <!-- PROFILE ICON -->
+        <div class="lg:py-5">
+            <img class="h-20 w-20 mx-auto" src="../src/image/profileIcon.png" alt="Profile Icon">
+        </div>
+        <!-- LIST BAR -->
+        <div class="lg:py-3">
+            <ul class="">
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer">Corporate
+                    Member</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer">Expert</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer">individual
+                    Member</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer">New
+                    Companies</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer">
+                    Administrator</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer">Ads
+                    Management</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MID CONTENT -->
+    <div class="lg:w-full mx-auto shadow-2xl">
+        <!-- LOGO -->
+        <div class="lg:w-11/12 mx-auto bg-black opacity-90 rounded-es-full rounded-ee-full">
+            <p class="text-white lg:text-lg font-lato text-center lg:py-3 mx-auto">LOGO</p>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="resetPassword">
+            <h1 class="font-poppins w-11/12 text-base md:text-lg font-bold mx-auto lg:mt-14 md:tracking-widest">Sucses, Please check your email
+            </h1>
+            <div class="flex flex-col items-center mt-3 md:mt-5 lg:mt-5 w-full mx-auto">
+                <div class="w-11/12 bg-slate-100 rounded-2xl flex flex-col py-12 lg:py-28 md:py-16">
+                    <p class="text-center font-bold px-32 text-lg font-mono text-red-500">We have received a request to reset the password for your account. please <a class="underline text-blue-500 hover:text-blue-600" href="https://fakemail.d.logique.co.id/#/">check your email for verification.</a> </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

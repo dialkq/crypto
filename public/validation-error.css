@@ -1,0 +1,59 @@
+#corporateName-error {
+    color: crimson;
+    font-size: small;
+}
+
+#industry-error {
+    color: crimson;
+    font-size: small;
+}
+
+#membership-error {
+    color: crimson;
+    font-size: small;
+}
+
+#firstName-error {
+    color: crimson;
+    font-size: small;
+}
+
+#lastName-error {
+    color: crimson;
+    font-size: small;
+}
+
+#email-error {
+    color: crimson;
+    font-size: small;
+}
+
+#sex-error {
+    color: crimson;
+    font-size: small;
+}
+
+#age-error {
+    color: crimson;
+    font-size: small;
+}
+
+#residentialArea-error {
+    color: crimson;
+    font-size: small;
+}
+
+#mainIndustry-error {
+    color: crimson;
+    font-size: small;
+}
+
+#corporateMemberAffiliation-error {
+    color: crimson;
+    font-size: small;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 40px;
+}
