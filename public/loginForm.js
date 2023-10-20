@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (webDataLogin) {
         const dataLogin = JSON.parse(webDataLogin);
         if (dataLogin.token) {
-            window.location.href = "menu.html";
+            window.location.href = "index.html";
         }
     }
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const jsonDataLogin = JSON.stringify(dataLogin);
                     localStorage.setItem("webDataLogin", jsonDataLogin);
                     // Redirect to a secure page or perform other actions
-                    window.open("corporateMember.html", "_blank");
+                    window.open("corporateMember.html", "_self");
                 } else {
                     // Handle login failure
                     alert("Login failed. Please check your credentials.");
