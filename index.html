@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- POPPINS -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css3py-3?family=Poppins&display=swap" rel="stylesheet"> -->
+    <!-- LATO -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css3py-3?family=Lato:wght@300;400;900&display=swap" rel="stylesheet"> -->
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- CSS TAILWIND INCLUDED-->
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="table.css">
+    <!-- TABULATOR -->
+    <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+    <!-- AJAX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- CSS HOVER BUTTON ADD NEW -->
+    <style>
+        .edit:hover i,
+        .edit:hover p {
+            color: white !important;
+        }
+
+        .formContainer {
+            max-height: calc(100vh - 0px);
+            overflow-y: auto;
+        }
+    </style>
+    <title>Menu</title>
+</head>
+
+<body class="w-full flex">
+    <!-- SIDEBAR -->
+    <div class="lg:w-3/12 lg:h-screen bg-white">
+        <!-- PROFILE ICON -->
+        <div class="lg:py-5">
+            <img class="h-20 w-20 mx-auto" src="./public/image/profileIcon.png" alt="Profile Icon">
+            <p id="showName" class="text-center text-xs font-light mt-1"></p>
+        </div>
+        <!-- LIST BAR -->
+        <div class="lg:py-3">
+            <ul class="">
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='corporateMember.html'">
+                    Corporate
+                    Member</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='expert.html' ">Expert</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='individualMember.html'">
+                    individual
+                    Member</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='newCompanies.html'">New
+                    Companies</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='series.html'">Series</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='movie.html'">Movie</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='administrator.html'">
+                    Administrator</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='ads.html'">Ads
+                    Management</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MID CONTENT -->
+    <div class="lg:w-full mx-auto shadow-2xl bg-white">
+        <!-- LOGO -->
+        <div class="lg:w-11/12 mx-auto bg-black opacity-90 rounded-es-full rounded-ee-full">
+            <p class="text-white lg:text-lg font-lato text-center lg:py-3 mx-auto">LOGO</p>
+        </div>
+        <p class="text-2xl font-bold text-center mt-10">Welcome</p>
+    </div>
+   <!-- JAVASCRIPT -->
+   <script src="main.js"></script>
+</body> 
+</html>
