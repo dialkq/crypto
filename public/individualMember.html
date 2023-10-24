@@ -16,21 +16,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- CSS TAILWIND INCLUDED-->
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="validation-error.css">
+    <link rel="stylesheet" href="select.css">
+    <link rel="stylesheet" href="table.css">
     <!-- TABULATOR -->
-    <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
-    <!-- AJAX -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- JQUERY VALIDATION -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
-    <!-- CSS HOVER BUTTON ADD NEW -->
+    <!-- <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet"> -->
+    <!-- SELECT2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <!-- NOTFY -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/styles/metro/notify-metro.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <!-- DATA TABLE -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" /> -->
+    <!-- GRID JS STYLE-->
+    <link href="https://cdn.jsdelivr.net/npm/gridjs@6.0.6/dist/theme/mermaid.min.css" rel="stylesheet">
+    <!-- CSS HOVER, BUTTON ADD NEW, TRANSITION -->
     <style>
         .edit:hover i,
         .edit:hover p {
             color: white !important;
+        }
+
+        .form-container {
+            max-height: calc(100vh - 50px);
+            overflow-y: auto;
+        }
+
+        .slide-up {
+            transform: translateY(0);
+            transition: transform 10s;
         }
     </style>
     <title>Individual Member</title>
@@ -41,8 +55,10 @@
     <div class="lg:w-3/12 lg:h-screen bg-white">
         <!-- PROFILE ICON -->
         <div class="lg:py-5">
-            <img class="h-20 w-20 mx-auto" src="../src/image/profileIcon.png" alt="Profile Icon">
-            <p id="showName" class="text-center text-xs font-light mt-1"></p>
+            <img class="h-20 w-20 mx-auto"
+                src="./image/profileIcon.png"
+                alt="Profile Icon">
+            <p id="showName" class="text-center text-xs text-black font-bold mt-2"></p>
             <p id="logoutBtn" class="text-center text-xs underline hover:text-blue-600 cursor-pointer">logout</p>
         </div>
         <!-- LIST BAR -->
@@ -54,23 +70,21 @@
                     Member</li>
                 <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
                     onclick="location.href='expert.html' ">Expert</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer bg-blue-50"
-                    onclick="location.href='individualMember.html'">
-                    individual
-                    Member</li>
                 <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
-                    onclick="location.href='newCompanies.html'">New
-                    Companies</li>
+                    onclick="location.href='individualMember.html'">
+                    Individual Member</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='newCompanies.html'">New Companies</li>
                 <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
                     onclick="location.href='series.html'">Series</li>
                 <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
                     onclick="location.href='movie.html'">Movie</li>
                 <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
-                    onclick="location.href='administrator.html'">
-                    Administrator</li>
+                    onclick="location.href='administrator.html'">Administrator</li>
                 <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
-                    onclick="location.href='ads.html'">Ads
-                    Management</li>
+                    onclick="location.href='ads.html'">Ads Management</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='stock.html'">Stock</li>
             </ul>
         </div>
     </div>
@@ -83,16 +97,17 @@
         </div>
 
         <!-- FITUR BAR -->
-        <div class="lg:mt-16 w-11/12 flex mx-auto justify-between">
+        <div class="lg:mt-16 w-11/12 mb-5 flex mx-auto justify-between">
             <div class="flex w-max">
                 <img class="h-6 my-auto" src="./image/paper.png" alt="paper icon">
                 <p class="font-sans font-bold text-lg ml-2 my-auto">Individual Member List</p>
             </div>
-            <!-- FILTER INPUT -->
-            <div class="relative">
-                <input class="bg-slate-100 lg:w-48 rounded-full py-1 pl-9 pr-2 text-base placeholder:font-semibold"
-                    type="search" name="search" id="" placeholder="Search">
-                <i class="fa fa-search absolute top-2 left-3 text-slate-400"></i>
+            <!-- FILTER INPUT SEARCH-->
+            <div class="relative ">
+                <input
+                    class="bg-slate-100 lg:w-48 rounded-full py-2 pl-9 pr-2 text-base placeholder:font-semibold focus:outline-none focus:border-violet-600 focus:ring-2 focus:ring-violet-600"
+                    type="search" name="search" id="searchInput" placeholder="Search...">
+                <i class="fa fa-search absolute top-3.5 left-3 text-slate-400"></i>
             </div>
             <button id="addNewBtn"
                 class="flex justify-evenly border-2 border-violet-600 rounded-xl edit focus:outline-none focus:border-transparent focus:ring-transparent focus:bg-gradient-to-r focus:from-blue-600 focus:to-violet-600 hover:outline-none hover:border-transparent hover:ring-transparent hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600"
@@ -111,38 +126,69 @@
                     <div
                         class="top-3 w-full flex justify-center z-50 items-center relative mx-auto transition-all duration-300 ease-in-out">
                         <div class="lg:w-2/3 lg:h-max rounded-3xl z-[60] flex-col overflow-y-auto bg-gray-100">
-                            <form id="form" class="w-10/12 my-8 mx-auto">
-                                <!-- FAMILY NAME -->
-                                <div class="flex justify-between mt-5">
-                                    <label class="text-base font-bold font-sans my-auto" for="corporateName">Family
+                            <!-- FORM -->
+                            <form id="form" class="w-10/12 my-8 mx-auto z-[60] overflow-hidden">
+                                <!-- CORPORATE INFO -->
+                                <div class="bg-slate-500 text-white w-max rounded-lg p-1.5">
+                                    <p class="text-center text-xs font-semibold font-sans">Corporate Info</p>
+                                </div>
+                                <hr class="border-b-0 border-black mt-2">
+                                <div class="flex justify-between w-full mt-5">
+                                    <label class="text-base font-bold font-sans my-auto" for="company_name">Corporate
                                         Name</label>
-                                    <div class="flex w-3/5 justify-start">
-                                        <div class="mr-8 flex flex-col items-start">
-                                            <input
-                                                class="w-full bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
-                                                type="text" name="firstName" placeholder="First Name">
-                                        </div>
-                                        <div class="flex flex-col items-start">
-                                            <input
-                                                class="w-full bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
-                                                type="text" name="lastName" placeholder="Last Name">
-                                        </div>
+                                    <div class="w-3/5 flex flex-col items-start">
+                                        <input
+                                            class="w-full bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                                            type="text" name="company_name" placeholder="Corporate Name" required>
                                     </div>
                                 </div>
-                                <!-- SEX -->
                                 <div class="flex justify-between mt-5">
-                                    <label class="text-base font-bold font-sans my-auto" for="sex">Sex</label>
-                                    <div class="w-3/5 flex flex-col items-start">
-                                        <select
+                                    <label class="text-base font-bold font-sans my-auto"
+                                        for="industry_id">Industry</label>
+                                    <div class="w-3/5 flex flex-col items-start my-auto">
+                                        <select id="industrySelect"
                                             class="w-full bg-white rounded-md pl-3 py-2 border border-slate-400 text-black focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
-                                            name="sex">
-                                            <option selected value="sex">Choose One</option>
-                                            <option value="man">Man</option>
-                                            <option value="woman">Woman</option>
+                                            name="industry_id">
+                                            <option selected value="industry">Select Industries
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
-                                <!-- EMAIL -->
+                                <div class="flex justify-between mt-5">
+                                    <label class="text-base font-bold font-sans my-auto" for="membership">Membership
+                                        Type</label>
+                                    <div class="w-3/5 flex flex-col items-start">
+                                        <select
+                                            class="w-full bg-white rounded-md pl-3 py-2 border border-slate-400 text-black focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                                            name="membership" id="">
+                                            <option selected value="membership">Select Membership Type</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <!-- OWNER INFO -->
+                                <div class="bg-slate-500 text-white w-max rounded-lg p-1.5 mt-10">
+                                    <p class="text-center text-xs font-semibold font-sans">Owner Info</p>
+                                </div>
+                                <hr class="border-b-0 border-black mt-2">
+                                <div class="flex justify-between mt-5">
+                                    <label class="text-base font-bold font-sans my-auto" for="first_Name">First
+                                        Name</label>
+                                    <div class="w-3/5 flex flex-col items-start">
+                                        <input
+                                            class="w-full bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                                            type="text" name="first_name" placeholder="First Name" required>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between mt-5">
+                                    <label class="text-base font-bold font-sans my-auto" for="last_Name">Last
+                                        Name</label>
+                                    <div class="w-3/5 flex flex-col items-start">
+                                        <input
+                                            class="w-full bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
+                                            type="text" name="last_name" placeholder="Last Name" required>
+                                    </div>
+                                </div>
                                 <div class="flex justify-between mt-5">
                                     <label class="text-base font-bold font-sans my-auto" for="email">Email</label>
                                     <div class="w-3/5 flex flex-col items-start">
@@ -151,60 +197,18 @@
                                             type="email" name="email" placeholder="john@example.com" required>
                                     </div>
                                 </div>
-                                <!-- AGE GROUP -->
-                                <div class="flex justify-between mt-5">
-                                    <label class="text-base font-bold font-sans my-auto" for="ageGroup">Age
-                                        Group</label>
-                                    <div class="w-3/5 flex flex-col items-start">
-                                        <input
-                                            class="w-full bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
-                                            type="number" name="age" placeholder="2" required>
-                                    </div>
-                                </div>
-                                <!-- RESIDENTIAL AREA -->
-                                <div class="flex justify-between mt-5">
-                                    <label class="text-base font-bold font-sans my-auto"
-                                        for="residentialArea">Residential Area</label>
-                                    <div class="w-3/5 flex flex-col items-start">
-                                        <input
-                                            class="w-full bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
-                                            type="text" name="residentialArea" placeholder="Area Of Residence" required>
-                                    </div>
-                                </div>
-                                <!-- MAIN INDUSTRY -->
-                                <div class="flex justify-between mt-5">
-                                    <label class="text-base font-bold font-sans my-auto" for="mainIndustry">Main
-                                        Industry</label>
-                                    <div class="w-3/5 flex flex-col items-start">
-                                        <select
-                                            class="w-full bg-white rounded-md pl-3 py-2 border border-slate-400 text-black focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
-                                            name="mainIndustry" id="mainIndustry">
-                                            <option selected value="mainIndustry">Choose Industries</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- CORPORATE MEMBER AFFILIATION -->
-                                <div class="flex justify-between mt-5">
-                                    <label class="text-base font-bold font-sans my-auto"
-                                        for="corporateMemberAffiliation">Corporate
-                                        Member Affiliation</label>
-                                    <div class="w-3/5 flex flex-col items-start">
-                                        <input
-                                            class="w-full bg-white border border-slate-400 rounded-md pl-3 py-2 focus:outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600"
-                                            type="text" name="corporateMemberAffiliation"
-                                            placeholder="Corporate member Affiliation" required>
-                                    </div>
+                                <!-- BUTTON ADD AND CANCEL DI DALAM FORM-->
+                                <div class="w-11/12 mx-auto flex justify-center mb-3 mt-10 z-[100]">
+                                    <button
+                                        class="text-violet-600 text-sm text-center font-bold border border-violet-600 ring-2 ring-violet-600 rounded-md px-6 py-2 mx-5 focus:outline-none focus:border-transparent focus:ring-transparent focus:bg-gradient-to-r focus:from-blue-600 focus:to-violet-600 focus:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600 hover:text-white cursor-pointer"
+                                        type="button" id="cancelBtn">Cancel</button>
+                                    <button id="registerSubmit"
+                                        class="text-violet-600 text-sm text-center font-bold border border-violet-600 ring-2 ring-violet-600 rounded-md px-6 py-2 focus:outline-none focus:border-transparent focus:ring-transparent focus:bg-gradient-to-r focus:from-blue-600 focus:to-violet-600 focus:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600 hover:text-white"
+                                        type="submit">Register</button>
                                 </div>
                             </form>
-                            <!-- BUTTON ADD AND CANCEL DI DALAM FORM-->
-                            <div class="w-11/12 mx-auto flex justify-center mb-10 mt-10 z-[100]">
-                                <button
-                                    class="text-violet-600 text-sm text-center font-bold border border-violet-600 ring-2 ring-violet-600 rounded-md px-6 py-2 mx-5 focus:outline-none focus:border-transparent focus:ring-transparent focus:bg-gradient-to-r focus:from-blue-600 focus:to-violet-600 focus:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600 hover:text-white cursor-pointer"
-                                    type="button" id="cancelBtn">Cancel</button>
-                                <button
-                                    class="text-violet-600 text-sm text-center font-bold border border-violet-600 ring-2 ring-violet-600 rounded-md px-6 py-2 focus:outline-none focus:border-transparent focus:ring-transparent focus:bg-gradient-to-r focus:from-blue-600 focus:to-violet-600 focus:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600 hover:text-white"
-                                    type="submit">Register</button>
-                            </div>
+                            <!-- error message element -->
+                            <div id="errorContainer"></div>
                         </div>
                     </div>
                 </div>
@@ -212,12 +216,24 @@
         </div>
 
         <!-- TABLE -->
-        <div id="individualMember-table" class="my-5 w-11/12 mx-auto"></div>
-    </div>
-    <!-- JAVASCRIPT -->
-    <script src="main.js"></script>
-    <script src="individualMemberTable.js"></script>
-    <script src="validationAdd.js"></script>
+        <!-- <div class="w-11/12 mx-auto my-10" id="corporate-table"></div> -->
+        <!-- JAVASCRIPT -->
+        <!-- JQUERY VALIDATION -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+        <!-- AJAX -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- SELECT2 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+        <!-- NOTIFY -->
+        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+        <!-- GRID JS  -->
+        <script src="https://cdn.jsdelivr.net/npm/gridjs@6.0.6/dist/gridjs.production.min.js"></script>
+        <!-- FILE -->
+        <script src="main.js"></script>
+        <script src="registerBtn.js"></script>
+        <script src="selectIndustries.js"></script>
 </body>
-
 </html>

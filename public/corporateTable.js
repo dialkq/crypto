@@ -1,42 +1,31 @@
-$(document).ready(function () {
-  const rawToken = localStorage.getItem("webDataLogin");
-  const data = JSON.parse(rawToken);
+const rawToken = localStorage.getItem("webDataLogin");
+const data = JSON.parse(rawToken);
 
-  // // FUNGSI SEARCH INPUT
-  // const searchInput = document.getElementById('searchInput');
-  new Tabulator("#corporate-table", {
-    ajaxURL: 'https://vietexpert-api.d.logique.co.id/api/admin/corporate',
-    ajaxConfig: {
-      method: "GET",
-      headers: {
-        'Authorization': `Bearer ${data.token}`
-      },
-    },
-    height: "auto",
-    layout: "fitColumns",
-    columns: [
-      { title: "ID", field: "id"},
-      { title: "Membership Type", field: "membership_type" },
-      { title: "Company Name", field: "company_name" },
-      { title: "Registration Date", field: "registration_date" },
+const grid = new gridjs.Grid({
+    columns: ["ID", "Membership Type", "Company Name", "Registration Date",
+        {
+            name: "Action",
+        }
     ],
-    pagination: true,
-    paginationSize: 20,
-    paginationMode: "remote",
-    ajaxURLGenerator: function (url, config, params) {
-      const { page, size } = params;
-      // const searchValue = searchInput.value;
-
-      return url + `?of=${Number(page) - 1}&sb=id&ob=ASC&lt=${size}`;
+    pagination: {
+        limit: 10,
+        server: {
+            url: (prev, page, limit) => `${prev}?lt=${limit}&of=${page}&sb=id`
+        }
     },
-    ajaxResponse: function (url, params, response) {
-      console.log("ss", response);
-      // table.replaceData(response.data.data); // Mengganti data di tabel dengan data baru
-      // table.redraw(true);
-      return {
-        data: response.data.data,
-        last_page: response.data.total_page
-      };
-    }
-  });  
+
+    server: {
+        url: 'https://vietexpert-api.d.logique.co.id/api/admin/corporate',
+        method: 'GET',
+        then: data => data.data.data.map(result => [result.id, result.membership_type, result.company_name, result.registration_date,]),
+        // then: data => {console.log("TAMPILKAN DATA", data)},
+        headers: {
+            'Authorization': `Bearer ${data.token}`
+        },
+        total: data => data.data.total,
+    },
+}).render(document.getElementById("corporate-table"));
+
+document.getElementById('searchInput').addEventListener('keyup', function () {
+    grid.forceRender();
 });

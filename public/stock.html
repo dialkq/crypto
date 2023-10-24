@@ -54,34 +54,33 @@
     <div class="lg:w-3/12 lg:h-screen bg-white">
         <!-- PROFILE ICON -->
         <div class="lg:py-5">
-            <img class="h-20 w-20 mx-auto" src="../src/image/profileIcon.png" alt="Profile Icon">
+            <img class="h-20 w-20 mx-auto" src="../public/image/profileIcon.png" alt="Profile Icon">
             <p id="showName" class="text-center text-xs font-light mt-1"></p>
             <p id="logoutBtn" class="text-center text-xs underline hover:text-blue-600 cursor-pointer">logout</p>
         </div>
         <!-- LIST BAR -->
         <div class="lg:py-3">
             <ul class="">
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='corporateMember.html'">
                     Corporate
                     Member</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='expert.html' ">Expert</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer loging-check"
                     onclick="location.href='individualMember.html'">
                     individual
                     Member</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
-                    onclick="location.href='newCompanies.html'">New
-                    Companies</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
+                    onclick="location.href='newCompanies.html'">New Companies</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='series.html'">Series</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='movie.html'">Movie</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='administrator.html'">
                     Administrator</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='ads.html'">Ads
                     Management</li>
                 <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer bg-blue-50"
@@ -100,7 +99,7 @@
         <!-- FITUR BAR -->
         <div class="lg:mt-16 w-11/12 mb-5 flex mx-auto justify-between">
             <div class="flex w-max">
-                <img class="h-6 my-auto" src="../src/image/paper.png" alt="paper icon">
+                <img class="h-6 my-auto" src="./image/paper.png" alt="paper icon">
                 <p class="font-sans font-bold text-lg ml-2 my-auto">Stock Chart</p>
             </div>
         </div>
@@ -237,5 +236,6 @@
         <script src="selectIndustries.js"></script>
         <script src="registerBtn.js"></script>
         <script src="stock.js"></script>
+        <script src="loginCheck.js"></script>
 </body>
 </html>

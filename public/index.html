@@ -42,35 +42,37 @@
     <div class="lg:w-3/12 lg:h-screen bg-white">
         <!-- PROFILE ICON -->
         <div class="lg:py-5">
-            <img class="h-20 w-20 mx-auto" src="./public/image/profileIcon.png----" alt="Profile Icon">
+            <img class="h-20 w-20 mx-auto" src="../public/image/profileIcon.png" alt="Profile Icon">
             <p id="showName" class="text-center text-xs font-light mt-1"></p>
         </div>
         <!-- LIST BAR -->
         <div class="lg:py-3">
             <ul class="">
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='corporateMember.html'">
                     Corporate
                     Member</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='expert.html' ">Expert</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='individualMember.html'">
                     individual
                     Member</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='newCompanies.html'">New
                     Companies</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='series.html'">Series</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='movie.html'">Movie</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='administrator.html'">
                     Administrator</li>
-                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer login-check"
                     onclick="location.href='ads.html'">Ads
                     Management</li>
+                <li class="font-sans font-bold lg:text-base lg:py-3 lg:pl-5 hover:bg-blue-50 cursor-pointer"
+                    onclick="location.href='stock.html'">Stock</li>
             </ul>
         </div>
     </div>
@@ -83,7 +85,9 @@
         </div>
         <p class="text-2xl font-bold text-center mt-10">Welcome</p>
     </div>
-   <!-- JAVASCRIPT -->
-   <script src="main.js"></script>
-</body> 
+    <!-- JAVASCRIPT -->
+    <script src="main.js"></script>
+    <script src="loginCheck.js"></script>
+    <script src="redirect-stock.js"></script>
+</body>
 </html>
